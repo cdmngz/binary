@@ -1,63 +1,77 @@
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
+body
+{
+    background-color: #031321;
+    display: grid;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    grid-template-rows: 20% 45% 35%;
+    height: 100vh;
+    margin: 0;
     overflow: hidden;
+    padding: 0;
     text-align: center;
 }
-input, span {
-    padding: 30px;
-    margin: 40px;
-    width: 500px;
-}
-input {
-    font-size: 50px;
-}
-pre {
-    color: white;
-    background-color: #abc;
-    padding: 20px;
-    text-shadow: 1px 1px 3px black;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    margin: 0;
-}
-span {
-    padding-top: 100px;
-    position: relative;
-    height: 40vh;
-    word-wrap: break-word;
-    animation: uno 8s infinite;
-    font-size: 25px;
-    overflow: hidden;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    color:rgb(0,255,0);
-    background-color: black;
-}
-article {
+header
+{
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+div, body
+{
+    font-size: 60px;
+    color: white;
+}
+label
+{
+    font-size: 50px;
+    color: #2196f3;
+}
+article
+{
+    align-items: center;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+article a
+{
+    animation: gravity 600ms infinite;
+    background-color: #2196f3;
+    border-radius: 50%;
+    box-shadow: 0 0 3px 3px #2196f3;
+    display: block;
+    height: 6px;
+    position: relative;
+    top: 0;
+    transition: 300ms;
+    width: 6px;
+}
+
+@keyframes gravity
+{
+    50% {
+        transform: translateY(2px);
+    }
+}
+aside
+{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+aside textarea
+{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #031321;
+    font-size: 30px;
+    padding: 15px;
+}
+aside code
+{
+    color: #2196f3;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
     overflow: hidden;
-    width: fit-content;
+    padding: 15px;
+    word-wrap: break-word;
 }
-span:first-of-type {
-    background-color: white;
-    color: black;
-}
-/*
-@keyframes uno {
-    0%, 40%, 50%, 90%, 100%{
-        transform: translate(0);
-        background-color: white;
-        color: black;
-    }
-    42%, 48%, 92%, 98% {
-        transform: translateX(100%);
-        background-color: black;
-        color: greenyellow;
-    }
-}
-*/

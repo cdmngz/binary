@@ -1,36 +1,63 @@
-document.getElementsByTagName("input")[0].oninput = function() {
-    var inputValue = this.value.slice(-1);
+var listA = document.getElementsByTagName("a");                                     //Selecciona todos los <a>
 
-    for(i=0;i<myArray.length;i++) {
-        if(inputValue==myArray[i][0]){
-            document.getElementsByTagName("span")[0].innerText += myArray[i][1];
-        }
-    }  
+window.onload = function() {                                                        //Asigna delay de <a>
+  for (var i=0; i<listA.length; i++)
+    listA[i].style.animationDelay = i*20+"ms";  
 }
 
-var f=3;
+document.addEventListener('keydown', logKey);                                       //Activa escucha de teclado
 
-window.setInterval(function(){
-  f--;
-
-  if(f<=0) {
-    f=3;
-    var textoInput = document.getElementsByTagName("input")[0].value;
-    document.getElementsByTagName("input")[0].value = '';
-    
-    var para = document.createElement("span");
-    var node = document.createTextNode("");
-    para.appendChild(node);
-
-    var child = document.getElementsByTagName("span")[0];
-    document.getElementsByTagName("article")[0].insertBefore(para,child);
-
-    var node = document.createElement("pre");                 // Create a <strong> node
-    var textnode = document.createTextNode(textoInput);         // Create a text node
-    node.appendChild(textnode);                              // Append the text to <strong>
-    document.getElementsByTagName("span")[1].appendChild(node);    
+function logKey(e) {
+  var bi;
+  document.getElementsByTagName("div")[0].innerText = e.key;
+  
+  for(i=0; i<myArray.length; i++) {
+    if(e.key == myArray[i][0]) {
+      bi = myArray[i][1];
+      document.getElementsByTagName("label")[0].innerText = bi;
+    }
   }
+    
+  function veamos(top) {
+    for (var i=0; i<listA.length; i++) {
+      (function (i) {
+        setTimeout(function () {
+          listA[i].style.top = "-"+top+"px";
+        }, 2*i);
+      })(i);
+    }
+  }
+  
+  for(var j=0; j<bi.length; j++) {
+    (function(j) {
+      var k = bi.slice(j,j+1);
+      setTimeout(function() {            
+        if(k == 1) {
+          veamos(60);
+        } else {
+          veamos(0);
+        }
+      },200*j)
+    })(j)
+  }
+}
 
-  document.getElementsByTagName("label")[0].innerText = f;
+document.getElementsByTagName("textarea")[0].oninput = function() {
+  var inputValue = this.value.slice(-1);
 
-},1000);
+  for(i=0;i<myArray.length;i++) {
+    if(inputValue == myArray[i][0]) {
+      document.getElementsByTagName("code")[0].innerText += myArray[i][1];
+    }
+  }  
+}
+
+/*
+for (var i = 0; i < 8; i++) {
+  (function (i) {
+    setTimeout(function () {
+      console.log(i);
+     }, 1000*i);
+    })(i);
+   };
+*/
